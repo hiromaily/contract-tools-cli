@@ -24,8 +24,6 @@ abi-decoder multicall3-inner-result
     const { flags } = await this.parse(Multicall3InnerResult);
 
     this.log('run abi-decoder multicall3-inner-result');
-    // [Debug]
-    // this.log(flags.data)
 
     // validate
     let data =

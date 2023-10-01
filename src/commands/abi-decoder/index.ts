@@ -24,7 +24,7 @@ foobar is not defined
 
   // e.g. ./bin/dev abi-decoder sub-cmd
   async run(): Promise<void> {
-    const { args, flags } = await this.parse(ABIDecoder);
+    const { args } = await this.parse(ABIDecoder);
 
     this.log(`${args.subCmd} is not defined`);
   }

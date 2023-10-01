@@ -44,8 +44,6 @@ contract-reader balanceOf (./src/commands/contract-reader/balanceOf.ts)
     const { flags } = await this.parse(BalanceOf);
 
     this.log('run contract-reader balanceOf');
-    // [Debug]
-    // this.log(flags.addr);
 
     // validate
     // if (process.env.PRIVATE_KEY === undefined) {
@@ -64,10 +62,10 @@ contract-reader balanceOf (./src/commands/contract-reader/balanceOf.ts)
 
     // get contract
     const contractAddress = getTokenContractAddress(flags.token, flags.network);
-    const usdcTokenContract = getERC20(contractAddress);
+    const tokenContract = getERC20(contractAddress);
 
     // call balanceOf()
     // this.log(await erc20.decimals());
-    this.log(await usdcTokenContract.balanceOf(flags.addr));
+    this.log(await tokenContract.balanceOf(flags.addr));
   }
 }

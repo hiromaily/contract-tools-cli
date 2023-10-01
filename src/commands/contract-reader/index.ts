@@ -2,8 +2,8 @@ import { Args, Command } from '@oclif/core';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
-export default class ContractCaller extends Command {
-  static description = 'Call Contract function';
+export default class ContractReader extends Command {
+  static description = 'Read Contract function';
 
   static examples = [
     `$ cmd contract-reader foobar
@@ -21,7 +21,7 @@ foobar is not defined
 
   // e.g. ./bin/dev contract-reader sub-cmd
   async run(): Promise<void> {
-    const { args } = await this.parse(ContractCaller);
+    const { args } = await this.parse(ContractReader);
 
     this.log(`${args.subCmd} is not defined`);
   }
