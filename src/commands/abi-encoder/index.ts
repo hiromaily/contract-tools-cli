@@ -2,12 +2,12 @@ import { Args, Command, Flags } from '@oclif/core';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
-export default class ABIDecoder extends Command {
-  static description = 'Decode ABI';
+export default class ABIEncoder extends Command {
+  static description = 'Encode ABI';
 
   static examples = [
-    `$ cmd abi-decoder foobar
-foobar is not defined: (./src/commands/abi-decoder/index.ts)
+    `$ cmd abi-encoder foobar
+foobar is not defined: (./src/commands/abi-encoder/index.ts)
 `,
   ];
 
@@ -24,10 +24,10 @@ foobar is not defined: (./src/commands/abi-decoder/index.ts)
 
   // e.g. ./bin/dev abi-decoder sub-cmd
   async run(): Promise<void> {
-    const { args, flags } = await this.parse(ABIDecoder);
+    const { args, flags } = await this.parse(ABIEncoder);
 
     this.log(
-      `${args.subCmd} is not defined: ${flags.fn ?? ''}! (./src/commands/abi-decoder/index.ts)`,
+      `${args.subCmd} is not defined: ${flags.fn ?? ''}! (./src/commands/abi-encoder/index.ts)`,
     );
   }
 }

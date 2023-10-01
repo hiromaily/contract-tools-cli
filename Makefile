@@ -36,3 +36,14 @@ multicall3-result-second:
 .PHONY: multicall3-inner-result
 multicall3-inner-result:
 	./bin/dev abi-decoder multicall3-inner-result
+
+#------------------------------------------------------------------------------
+# abi-encoder for multicall3
+#------------------------------------------------------------------------------
+.PHONY: encode-multicall3-inner-result
+encode-multicall3-inner-result:
+	./bin/dev abi-encoder multicall3-inner-result
+
+.PHONY: encode-multicall3-result
+encode-multicall3-result:
+	./bin/dev abi-encoder multicall3-result
