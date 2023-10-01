@@ -1,5 +1,6 @@
 import { Command, Flags } from '@oclif/core';
-import { getEndpoint, encodePackedParams } from '../../lib/ethers';
+import { getEndpoint } from '../../lib/ethers';
+// import {getEndpoint, encodePackedParams} from '../../lib/ethers'
 import { ADDR_MAINNET } from '../../lib/configs';
 
 export default class EstimateFees extends Command {
@@ -19,13 +20,13 @@ contract-caller estimateFees (./src/commands/contract-caller/estimateFees.ts)
 
   static args = {};
 
-  // e.g. ./bin/dev contract-caller estimateFees --chainid 102
+  // e.g. ./bin/dev contract-caller estimate-fees --chainid 102
   async run(): Promise<void> {
     const { flags } = await this.parse(EstimateFees);
 
-    this.log('run estimateFees! (./src/commands/contract-caller/estimateFees.ts)');
+    this.log('run contract-caller estimateFees! (./src/commands/contract-caller/estimateFees.ts)');
     // [Debug]
-    //this.log(flags.chainid.toString());
+    // this.log(flags.chainid.toString());
 
     // validate
     if (flags.chainid === undefined) {
@@ -41,7 +42,7 @@ contract-caller estimateFees (./src/commands/contract-caller/estimateFees.ts)
     const ua = '0x0000000000000000000000000000000000000000';
     const payload = '0x';
     const payInZero = false;
-    const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000';
+    // const ZERO_ADDRESS = '0x0000000000000000000000000000000000000000'
     // const adapterParams = {
     //   [1]: { types: ['uint16', 'uint256'], values: [1, 200000] },
     //   [2]: {

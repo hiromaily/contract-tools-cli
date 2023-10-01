@@ -2,6 +2,10 @@ import { Command, Flags } from '@oclif/core';
 import { getERC20 } from '../../lib/ethers';
 import { ADDR_MAINNET } from '../../lib/configs';
 
+// @See Example: ERC-20 Contract
+// https://docs.ethers.org/v5/api/contract/example/
+// @See ERC-20 TOKEN STANDARD
+// https://ethereum.org/en/developers/docs/standards/tokens/erc-20/
 export default class BalanceOf extends Command {
   static description = 'call ERC20 balanceOf()';
 
@@ -19,13 +23,13 @@ contract-caller balanceOf (./src/commands/contract-caller/balanceOf.ts)
 
   static args = {};
 
-  // e.g. ./bin/dev contract-caller balanceOf --addr 0xc1f3a7613c70BBf1Bd8C4924192Bd75451fE0dd1
+  // e.g. ./bin/dev contract-caller balance-of --addr 0xc1f3a7613c70BBf1Bd8C4924192Bd75451fE0dd1
   async run(): Promise<void> {
     const { flags } = await this.parse(BalanceOf);
 
-    this.log('run balanceOf! (./src/commands/contract-caller/balanceOf.ts)');
+    this.log('run contract-caller balanceOf! (./src/commands/contract-caller/balanceOf.ts)');
     // [Debug]
-    //this.log(flags.addr);
+    // this.log(flags.addr);
 
     // validate
     // if (process.env.PRIVATE_KEY === undefined) {
