@@ -1,3 +1,3 @@
-import { ethers, InterfaceAbi } from 'ethers';
+import {ethers, InterfaceAbi} from 'ethers'
 
-export const getABIInterface = (abi: InterfaceAbi) => new ethers.Interface(abi);
+export const getABIInterface = (abi: InterfaceAbi) => new ethers.Interface(abi)

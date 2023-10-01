@@ -1,3 +1,3 @@
-import { ethers } from 'ethers';
+import {ethers} from 'ethers'
 
-export const getProvider = (url: string) => new ethers.JsonRpcProvider(url);
+export const getProvider = (url: string) => new ethers.JsonRpcProvider(url)
