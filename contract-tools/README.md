@@ -1,5 +1,4 @@
-oclif-hello-world
-=================
+# contract-tools
 
 oclif example Hello World CLI
 
@@ -8,37 +7,48 @@ oclif example Hello World CLI
 [![GitHub license](https://img.shields.io/github/license/oclif/hello-world)](https://github.com/oclif/hello-world/blob/main/LICENSE)
 
 <!-- toc -->
-* [Usage](#usage)
-* [Commands](#commands)
+
+- [Usage](#usage)
+- [Commands](#commands)
 <!-- tocstop -->
+
 # Usage
+
 <!-- usage -->
+
 ```sh-session
 $ npm install -g contract-tools
 $ contract-tools COMMAND
 running command...
 $ contract-tools (--version)
-contract-tools/0.0.0 darwin-arm64 node-v18.17.1
+contract-tools/1.0.0 darwin-arm64 node-v18.17.1
 $ contract-tools --help [COMMAND]
 USAGE
   $ contract-tools COMMAND
 ...
 ```
+
 <!-- usagestop -->
+
 # Commands
+
 <!-- commands -->
-* [`contract-tools hello PERSON`](#contract-tools-hello-person)
-* [`contract-tools hello world`](#contract-tools-hello-world)
-* [`contract-tools help [COMMANDS]`](#contract-tools-help-commands)
-* [`contract-tools plugins`](#contract-tools-plugins)
-* [`contract-tools plugins:install PLUGIN...`](#contract-tools-pluginsinstall-plugin)
-* [`contract-tools plugins:inspect PLUGIN...`](#contract-tools-pluginsinspect-plugin)
-* [`contract-tools plugins:install PLUGIN...`](#contract-tools-pluginsinstall-plugin-1)
-* [`contract-tools plugins:link PLUGIN`](#contract-tools-pluginslink-plugin)
-* [`contract-tools plugins:uninstall PLUGIN...`](#contract-tools-pluginsuninstall-plugin)
-* [`contract-tools plugins:uninstall PLUGIN...`](#contract-tools-pluginsuninstall-plugin-1)
-* [`contract-tools plugins:uninstall PLUGIN...`](#contract-tools-pluginsuninstall-plugin-2)
-* [`contract-tools plugins update`](#contract-tools-plugins-update)
+
+- [contract-tools](#contract-tools)
+- [Usage](#usage)
+- [Commands](#commands)
+  - [`contract-tools hello PERSON`](#contract-tools-hello-person)
+  - [`contract-tools hello world`](#contract-tools-hello-world)
+  - [`contract-tools help [COMMANDS]`](#contract-tools-help-commands)
+  - [`contract-tools plugins`](#contract-tools-plugins)
+  - [`contract-tools plugins:install PLUGIN...`](#contract-tools-pluginsinstall-plugin)
+  - [`contract-tools plugins:inspect PLUGIN...`](#contract-tools-pluginsinspect-plugin)
+  - [`contract-tools plugins:install PLUGIN...`](#contract-tools-pluginsinstall-plugin-1)
+  - [`contract-tools plugins:link PLUGIN`](#contract-tools-pluginslink-plugin)
+  - [`contract-tools plugins:uninstall PLUGIN...`](#contract-tools-pluginsuninstall-plugin)
+  - [`contract-tools plugins:uninstall PLUGIN...`](#contract-tools-pluginsuninstall-plugin-1)
+  - [`contract-tools plugins:uninstall PLUGIN...`](#contract-tools-pluginsuninstall-plugin-2)
+  - [`contract-tools plugins update`](#contract-tools-plugins-update)
 
 ## `contract-tools hello PERSON`
 
@@ -62,7 +72,7 @@ EXAMPLES
   hello friend from oclif! (./src/commands/hello/index.ts)
 ```
 
-_See code: [dist/commands/hello/index.ts](https://github.com/hiromaily/contract-tools/blob/v0.0.0/dist/commands/hello/index.ts)_
+_See code: [dist/commands/hello/index.ts](https://github.com/hiromaily/contract-tools/blob/v1.0.0/dist/commands/hello/index.ts)_
 
 ## `contract-tools hello world`
 
@@ -80,7 +90,7 @@ EXAMPLES
   hello world! (./src/commands/hello/world.ts)
 ```
 
-_See code: [dist/commands/hello/world.ts](https://github.com/hiromaily/contract-tools/blob/v0.0.0/dist/commands/hello/world.ts)_
+_See code: [dist/commands/hello/world.ts](https://github.com/hiromaily/contract-tools/blob/v1.0.0/dist/commands/hello/world.ts)_
 
 ## `contract-tools help [COMMANDS]`
 
@@ -156,7 +166,7 @@ ALIASES
   $ contract-tools plugins add
 
 EXAMPLES
-  $ contract-tools plugins:install myplugin 
+  $ contract-tools plugins:install myplugin
 
   $ contract-tools plugins:install https://github.com/someuser/someplugin
 
@@ -221,7 +231,7 @@ ALIASES
   $ contract-tools plugins add
 
 EXAMPLES
-  $ contract-tools plugins:install myplugin 
+  $ contract-tools plugins:install myplugin
 
   $ contract-tools plugins:install https://github.com/someuser/someplugin
 
@@ -347,4 +357,5 @@ DESCRIPTION
 ```
 
 _See code: [@oclif/plugin-plugins](https://github.com/oclif/plugin-plugins/blob/v3.8.3/src/commands/plugins/update.ts)_
+
 <!-- commandsstop -->

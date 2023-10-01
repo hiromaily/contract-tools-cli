@@ -1,4 +1,6 @@
-import {Args, Command, Flags} from '@oclif/core'
+import {Args, Command} from '@oclif/core'
+import * as dotenv from 'dotenv'
+dotenv.config()
 
 export default class ContractCaller extends Command {
   static description = 'Call Contract function'
@@ -12,7 +14,7 @@ hello friend from oclif! (./src/commands/contract/index.ts)
   // @See https://oclif.io/docs/flags
   static flags = {
     // -f or --fn
-    fn: Flags.string({char: 'f', description: 'Function name', required: true}),
+    // fn: Flags.string({char: 'f', description: 'Function name', required: true}),
   }
 
   // @See https://oclif.io/docs/args/
@@ -20,10 +22,12 @@ hello friend from oclif! (./src/commands/contract/index.ts)
     subCmd: Args.string({description: 'invalid sub-command', required: true}),
   }
 
-  // e.g. ./bin/dev contract-caller sub-cmd --fn fooBar
+  // e.g. ./bin/dev contract-caller sub-cmd
   async run(): Promise<void> {
     const {args, flags} = await this.parse(ContractCaller)
 
-    this.log(`${args.subCmd} is not defined: ${flags.fn ?? ""}! (./src/commands/contract=caller/index.ts)`)
+    this.log(
+      `${args.subCmd} is not defined: ${flags.fn ?? ''}! (./src/commands/contract=caller/index.ts)`,
+    )
   }
 }
