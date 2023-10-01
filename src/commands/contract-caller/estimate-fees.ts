@@ -35,10 +35,10 @@ contract-caller estimateFees (./src/commands/contract-caller/estimateFees.ts)
     }
 
     // get contract
-    const endpoint = getEndpoint(ADDR_MAINNET.ETH_ENDPOINT);
+    const endpointContract = getEndpoint(ADDR_MAINNET.ETH_ENDPOINT);
 
     // parameter
-    const chainID = 102;
+    const chainID = flags.chainid ?? 102;
     const ua = '0x0000000000000000000000000000000000000000';
     const payload = '0x';
     const payInZero = false;
@@ -57,6 +57,8 @@ contract-caller estimateFees (./src/commands/contract-caller/estimateFees.ts)
     const fmtAdapterParams = '0x';
 
     // call estimateFees()
-    this.log(await endpoint.estimateFees(chainID, ua, payload, payInZero, fmtAdapterParams));
+    this.log(
+      await endpointContract.estimateFees(chainID, ua, payload, payInZero, fmtAdapterParams),
+    );
   }
 }

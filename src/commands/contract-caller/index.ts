@@ -17,6 +17,8 @@ foobar is not defined: (./src/commands/contract-caller/index.ts)
     addr: Flags.string({ char: 'a', description: 'Your wallet address', required: true }),
     // -c or --chainid
     chainid: Flags.integer({ char: 'c', description: 'chainId', required: true }),
+    // -p or --poolid
+    poolid: Flags.integer({ char: 'c', description: 'poolId', required: true }),
   };
 
   // @See https://oclif.io/docs/args/

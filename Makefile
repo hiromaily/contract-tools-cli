@@ -14,6 +14,15 @@ balance-of:
 estimate-fees:
 	./bin/dev contract-caller estimate-fees --chainid 102
 
+.PHONY: chain-path-index-lookup
+chain-path-index-lookup:
+	./bin/dev contract-caller chain-path-index-lookup --chainid 102 --poolid 2
+
+.PHONY: chain-path-index-lookup-failure
+chain-path-index-lookup-failure:
+	./bin/dev contract-caller chain-path-index-lookup --chainid 999 --poolid 200
+# => return 0n when accessing by out of index
+
 #------------------------------------------------------------------------------
 # abi-decoder for multicall3
 #------------------------------------------------------------------------------

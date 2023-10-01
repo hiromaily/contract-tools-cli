@@ -42,10 +42,10 @@ contract-caller balanceOf (./src/commands/contract-caller/balanceOf.ts)
     }
 
     // get contract
-    const erc20 = getERC20(ADDR_MAINNET.USDC);
+    const usdcTokenContract = getERC20(ADDR_MAINNET.USDC);
 
     // call balanceOf()
     // this.log(await erc20.decimals());
-    this.log(await erc20.balanceOf(flags.addr));
+    this.log(await usdcTokenContract.balanceOf(flags.addr));
   }
 }
