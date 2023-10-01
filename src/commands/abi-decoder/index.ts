@@ -7,7 +7,7 @@ export default class ABIDecoder extends Command {
 
   static examples = [
     `$ cmd abi-decoder foobar
-foobar is not defined: (./src/commands/abi-decoder/index.ts)
+foobar is not defined
 `,
   ];
 
@@ -26,8 +26,6 @@ foobar is not defined: (./src/commands/abi-decoder/index.ts)
   async run(): Promise<void> {
     const { args, flags } = await this.parse(ABIDecoder);
 
-    this.log(
-      `${args.subCmd} is not defined: ${flags.fn ?? ''}! (./src/commands/abi-decoder/index.ts)`,
-    );
+    this.log(`${args.subCmd} is not defined`);
   }
 }

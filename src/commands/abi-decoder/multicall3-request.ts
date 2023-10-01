@@ -7,7 +7,7 @@ export default class Multicall3Request extends Command {
 
   static examples = [
     `<%= config.bin %> <%= command.id %>
-abi-decoder multicall3-request (./src/commands/abi-decoder/request.ts)
+abi-decoder multicall3-request
 `,
   ];
 
@@ -23,9 +23,7 @@ abi-decoder multicall3-request (./src/commands/abi-decoder/request.ts)
   async run(): Promise<void> {
     const { flags } = await this.parse(Multicall3Request);
 
-    this.log(
-      'run abi-decoder multicall3-request! (./src/commands/abi-decoder/multicall3-request.ts)',
-    );
+    this.log('run abi-decoder multicall3-request');
     // [Debug]
     // this.log(flags.data);
 

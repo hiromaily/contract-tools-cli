@@ -6,7 +6,7 @@ export default class Multicall3InnerResult extends Command {
 
   static examples = [
     `<%= config.bin %> <%= command.id %>
-abi-encoder multicall3-inner-result (./src/commands/abi-encoder/result.ts)
+abi-encoder multicall3-inner-result
 `,
   ];
 
@@ -22,9 +22,7 @@ abi-encoder multicall3-inner-result (./src/commands/abi-encoder/result.ts)
   async run(): Promise<void> {
     // const {flags} = await this.parse(Multicall3InnerResult)
 
-    this.log(
-      'run abi-encoder multicall3-inner-result! (./src/commands/abi-encoder/multicall3-inner-result.ts)',
-    );
+    this.log('run abi-encoder multicall3-inner-result');
 
     const abiCoder = ethers.AbiCoder.defaultAbiCoder();
 

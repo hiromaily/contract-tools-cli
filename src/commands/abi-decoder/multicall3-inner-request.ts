@@ -7,7 +7,7 @@ export default class Multicall3InnerRequest extends Command {
 
   static examples = [
     `<%= config.bin %> <%= command.id %>
-abi-decoder multicall3-inner-request (./src/commands/abi-decoder/inner-request.ts)
+abi-decoder multicall3-inner-request
 `,
   ];
 
@@ -23,9 +23,7 @@ abi-decoder multicall3-inner-request (./src/commands/abi-decoder/inner-request.t
   async run(): Promise<void> {
     const { flags } = await this.parse(Multicall3InnerRequest);
 
-    this.log(
-      'run abi-decoder multicall3-inner-request! (./src/commands/abi-decoder/multicall3-inner-request.ts)',
-    );
+    this.log('run abi-decoder multicall3-inner-request');
     // [Debug]
     // this.log(flags.data);
 
