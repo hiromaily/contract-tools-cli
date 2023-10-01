@@ -65,15 +65,21 @@
     ],
     "topicSeparator": " ",
     "topics": {
-      "hello": {
-        "description": "Say hello to the world and others"
+      "contract-caller": {
+        "description": "Call Contract Function"
+      },
+      "abi-decoder": {
+        "description": "Decode multicall3 data"
+      },
+      "abi-encoder": {
+        "description": "Encode multicall3 data"
       }
     }
   },
   "engines": {
     "node": ">=18.0.0"
   },
-  "bugs": "https://github.com/hiromaily/contract-tools/issues",
+  "bugs": "https://github.com/hiromaily/contract-tools-cli/issues",
   "keywords": [
     "oclif"
   ],
