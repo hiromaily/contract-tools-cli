@@ -8,7 +8,7 @@ export default class ChainPathIndexLookup extends Command {
 
   static examples = [
     `<%= config.bin %> <%= command.id %>
-contract-caller chain-path-index-lookup
+contract-reader chain-path-index-lookup
 `,
   ];
 
@@ -22,11 +22,11 @@ contract-caller chain-path-index-lookup
 
   static args = {};
 
-  // e.g. ./bin/dev contract-caller chain-path-index-lookup --chainid 102 --poolid 2
+  // e.g. ./bin/dev contract-reader chain-path-index-lookup --chainid 102 --poolid 2
   async run(): Promise<void> {
     const { flags } = await this.parse(ChainPathIndexLookup);
 
-    this.log('run contract-caller chain-path-index-lookup');
+    this.log('run contract-reader chain-path-index-lookup');
 
     // get contract
     const poolContract = getSGPool(ADDR_MAINNET.ETH_SG_POOL_USDC);

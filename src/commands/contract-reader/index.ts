@@ -6,7 +6,7 @@ export default class ContractCaller extends Command {
   static description = 'Call Contract function';
 
   static examples = [
-    `$ cmd contract-caller foobar
+    `$ cmd contract-reader foobar
 foobar is not defined
 `,
   ];
@@ -19,7 +19,7 @@ foobar is not defined
     subCmd: Args.string({ description: 'invalid sub-command', required: true }),
   };
 
-  // e.g. ./bin/dev contract-caller sub-cmd
+  // e.g. ./bin/dev contract-reader sub-cmd
   async run(): Promise<void> {
     const { args } = await this.parse(ContractCaller);
 

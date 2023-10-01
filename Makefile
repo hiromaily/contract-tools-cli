@@ -1,31 +1,31 @@
 
 #------------------------------------------------------------------------------
-# contract-caller
+# contract-reader
 #------------------------------------------------------------------------------
 .PHONY: caller-sub-cmd
 caller-sub-cmd:
-	./bin/dev contract-caller sub-cmd
+	./bin/dev contract-reader sub-cmd
 
 .PHONY: caller-balance-of
 caller-balance-of:
-	./bin/dev contract-caller balance-of --addr 0xc1f3a7613c70BBf1Bd8C4924192Bd75451fE0dd1
+	./bin/dev contract-reader balance-of --addr 0xc1f3a7613c70BBf1Bd8C4924192Bd75451fE0dd1
 
 .PHONY: caller-estimate-fees
 caller-estimate-fees:
-	./bin/dev contract-caller estimate-fees --chainid 102
+	./bin/dev contract-reader estimate-fees --chainid 102
 
 .PHONY: caller-chain-path-index-lookup
 caller-chain-path-index-lookup:
-	./bin/dev contract-caller chain-path-index-lookup --chainid 102 --poolid 2
+	./bin/dev contract-reader chain-path-index-lookup --chainid 102 --poolid 2
 
 .PHONY: caller-chain-path-index-lookup-failure
 caller-chain-path-index-lookup-failure:
-	./bin/dev contract-caller chain-path-index-lookup --chainid 999 --poolid 200
+	./bin/dev contract-reader chain-path-index-lookup --chainid 999 --poolid 200
 # => return 0n when accessing by out of index
 
 # For test
-.PHONY: all-contract-caller
-all-contract-caller: caller-sub-cmd caller-balance-of caller-chain-path-index-lookup
+.PHONY: all-contract-reader
+all-contract-reader: caller-sub-cmd caller-balance-of caller-chain-path-index-lookup
 
 #------------------------------------------------------------------------------
 # abi-decoder for multicall3

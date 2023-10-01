@@ -1,10 +1,10 @@
 import { expect, test } from '@oclif/test';
 
-describe('contract-caller index', () => {
+describe('contract-reader index', () => {
   test
     .stdout()
-    .command(['contract-caller', 'foobar', '--from=oclif'])
-    .it('runs contract-caller cmd', (ctx) => {
+    .command(['contract-reader', 'foobar', '--from=oclif'])
+    .it('runs contract-reader cmd', (ctx) => {
       expect(ctx.stdout).to.contain('foobar is not defined:');
     });
 });

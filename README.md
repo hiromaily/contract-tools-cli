@@ -33,16 +33,16 @@ USAGE
 - [contract-tools-cli](#contract-tools-cli)
 - [Usage](#usage)
 - [Commands](#commands)
-  - [`contract-tools-cli contract-caller balanceOf`](#contract-tools-cli-contract-caller-balanceof)
-  - [`contract-tools-cli contract-caller estimateFees`](#contract-tools-cli-contract-caller-estimatefees)
+  - [`contract-tools-cli contract-reader balanceOf`](#contract-tools-cli-contract-reader-balanceof)
+  - [`contract-tools-cli contract-reader estimateFees`](#contract-tools-cli-contract-reader-estimatefees)
 
-## `contract-tools-cli contract-caller balanceOf`
+## `contract-tools-cli contract-reader balanceOf`
 
 Call ERC20 balanceOf
 
 ```
 USAGE
-  $ contract-tools-cli contract-caller balanceOf --addr <your-address>
+  $ contract-tools-cli contract-reader balanceOf --addr <your-address>
 
 ARGUMENTS
   balanceOf  balanceOf function
@@ -54,16 +54,16 @@ DESCRIPTION
   call ERC20 balanceOf function of USDT contract on Ethereum Mainnet
 
 EXAMPLES
-  $ contract-tools-cli contract-caller balanceOf --addr 0x...
+  $ contract-tools-cli contract-reader balanceOf --addr 0x...
 ```
 
-## `contract-tools-cli contract-caller estimateFees`
+## `contract-tools-cli contract-reader estimateFees`
 
 Call Endpoint estimateFees
 
 ```
 USAGE
-  $ contract-tools-cli contract-caller estimateFees --chainid <chainId>
+  $ contract-tools-cli contract-reader estimateFees --chainid <chainId>
 
 ARGUMENTS
   estimateFees  estimateFees function
@@ -75,9 +75,9 @@ DESCRIPTION
   call Endpoint estimateFees function of Endpoint contract on Ethereum Mainnet
 
 EXAMPLES
-  $ contract-tools-cli contract-caller estimateFees --chainid 102
+  $ contract-tools-cli contract-reader estimateFees --chainid 102
 ```
 
-_See code: [dist/commands/contract-caller/index.ts](https://github.com/hiromaily/contract-tools-cli/blob/main/src/commands/contract-caller/index.ts)_
+_See code: [dist/commands/contract-reader/index.ts](https://github.com/hiromaily/contract-tools-cli/blob/main/src/commands/contract-reader/index.ts)_
 
 <!-- commandsstop -->

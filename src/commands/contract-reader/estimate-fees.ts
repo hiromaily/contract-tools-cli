@@ -8,7 +8,7 @@ export default class EstimateFees extends Command {
 
   static examples = [
     `<%= config.bin %> <%= command.id %>
-contract-caller estimateFees
+contract-reader estimateFees
 `,
   ];
 
@@ -20,11 +20,11 @@ contract-caller estimateFees
 
   static args = {};
 
-  // e.g. ./bin/dev contract-caller estimate-fees --chainid 102
+  // e.g. ./bin/dev contract-reader estimate-fees --chainid 102
   async run(): Promise<void> {
     const { flags } = await this.parse(EstimateFees);
 
-    this.log('run contract-caller estimateFees');
+    this.log('run contract-reader estimateFees');
 
     // get contract
     const endpointContract = getEndpoint(ADDR_MAINNET.ETH_ENDPOINT);
