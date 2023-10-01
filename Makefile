@@ -2,26 +2,29 @@
 #------------------------------------------------------------------------------
 # contract-caller
 #------------------------------------------------------------------------------
-.PHONY: sub-cmd
-sub-cmd:
+.PHONY: caller-sub-cmd
+caller-sub-cmd:
 	./bin/dev contract-caller sub-cmd
 
-.PHONY: balance-of
-balance-of:
+.PHONY: caller-balance-of
+caller-balance-of:
 	./bin/dev contract-caller balance-of --addr 0xc1f3a7613c70BBf1Bd8C4924192Bd75451fE0dd1
 
-.PHONY: estimate-fees
-estimate-fees:
+.PHONY: caller-estimate-fees
+caller-estimate-fees:
 	./bin/dev contract-caller estimate-fees --chainid 102
 
-.PHONY: chain-path-index-lookup
-chain-path-index-lookup:
+.PHONY: caller-chain-path-index-lookup
+caller-chain-path-index-lookup:
 	./bin/dev contract-caller chain-path-index-lookup --chainid 102 --poolid 2
 
-.PHONY: chain-path-index-lookup-failure
-chain-path-index-lookup-failure:
+.PHONY: caller-chain-path-index-lookup-failure
+caller-chain-path-index-lookup-failure:
 	./bin/dev contract-caller chain-path-index-lookup --chainid 999 --poolid 200
 # => return 0n when accessing by out of index
+
+.PHONY: all-contract-caller
+all-contract-caller: caller-sub-cmd caller-balance-of caller-chain-path-index-lookup
 
 #------------------------------------------------------------------------------
 # abi-decoder for multicall3

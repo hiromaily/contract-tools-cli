@@ -8,44 +8,30 @@ export default class ChainPathIndexLookup extends Command {
 
   static examples = [
     `<%= config.bin %> <%= command.id %>
-contract-caller chain-path-index-lookup (./src/commands/contract-caller/chain-path-index-lookup.ts)
+contract-caller chain-path-index-lookup
 `,
   ];
 
   // @See https://oclif.io/docs/flags
   static flags = {
     // -c or --chainid
-    chainid: Flags.integer({ char: 'c', description: 'chainId', required: true }),
+    chainid: Flags.integer({ char: 'c', default: 102, description: 'chainId', required: false }),
     // -p or --poolid
-    poolid: Flags.integer({ char: 'c', description: 'poolId', required: true }),
+    poolid: Flags.integer({ char: 'p', default: 2, description: 'poolId', required: false }),
   };
 
   static args = {};
 
-  // e.g. ./bin/dev contract-caller chain-path-index-lookup --chainid 102
+  // e.g. ./bin/dev contract-caller chain-path-index-lookup --chainid 102 --poolid 2
   async run(): Promise<void> {
     const { flags } = await this.parse(ChainPathIndexLookup);
 
-    this.log(
-      'run contract-caller chain-path-index-lookup! (./src/commands/contract-caller/chain-path-index-lookup.ts)',
-    );
-    // [Debug]
-    // this.log(flags.chainid.toString());
-
-    // validate
-    // if (flags.chainid === undefined) {
-    //   this.log('--chainid flag for chainId is required');
-    //   return;
-    // }
+    this.log('run contract-caller chain-path-index-lookup');
 
     // get contract
     const poolContract = getSGPool(ADDR_MAINNET.ETH_SG_POOL_USDC);
 
-    // parameter
-    const chainID = flags.chainid ?? 102;
-    const poolID = flags.poolid ?? 2;
-
     // call chainPathIndexLookup()
-    this.log(await poolContract.chainPathIndexLookup(chainID, poolID));
+    this.log(await poolContract.chainPathIndexLookup(flags.chainid, flags.poolid));
   }
 }

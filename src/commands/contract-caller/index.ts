@@ -1,4 +1,4 @@
-import { Args, Command, Flags } from '@oclif/core';
+import { Args, Command } from '@oclif/core';
 import * as dotenv from 'dotenv';
 dotenv.config();
 
@@ -7,19 +7,12 @@ export default class ContractCaller extends Command {
 
   static examples = [
     `$ cmd contract-caller foobar
-foobar is not defined: (./src/commands/contract-caller/index.ts)
+foobar is not defined
 `,
   ];
 
   // @See https://oclif.io/docs/flags
-  static flags = {
-    // -a or --addr
-    addr: Flags.string({ char: 'a', description: 'Your wallet address', required: true }),
-    // -c or --chainid
-    chainid: Flags.integer({ char: 'c', description: 'chainId', required: true }),
-    // -p or --poolid
-    poolid: Flags.integer({ char: 'c', description: 'poolId', required: true }),
-  };
+  static flags = {};
 
   // @See https://oclif.io/docs/args/
   static args = {
@@ -28,10 +21,8 @@ foobar is not defined: (./src/commands/contract-caller/index.ts)
 
   // e.g. ./bin/dev contract-caller sub-cmd
   async run(): Promise<void> {
-    const { args, flags } = await this.parse(ContractCaller);
+    const { args } = await this.parse(ContractCaller);
 
-    this.log(
-      `${args.subCmd} is not defined: ${flags.fn ?? ''}! (./src/commands/contract-caller/index.ts)`,
-    );
+    this.log(`${args.subCmd} is not defined`);
   }
 }

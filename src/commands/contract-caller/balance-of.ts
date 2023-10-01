@@ -1,6 +1,8 @@
 import { Command, Flags } from '@oclif/core';
 import { getERC20 } from '../../lib/ethers';
-import { ADDR_MAINNET } from '../../lib/configs';
+import { getTokenContractAddress } from '../../lib/configs';
+import { isTokenType } from '../../lib/tokens';
+import { isNetworkType } from '../../lib/networks';
 
 // @See Example: ERC-20 Contract
 // https://docs.ethers.org/v5/api/contract/example/
@@ -19,6 +21,20 @@ contract-caller balanceOf (./src/commands/contract-caller/balanceOf.ts)
   static flags = {
     // -a or --addr
     addr: Flags.string({ char: 'a', description: 'Your wallet address', required: true }),
+    // -t or --token
+    token: Flags.string({
+      char: 't',
+      default: 'usdc',
+      description: 'Token like usdc/usdt',
+      required: false,
+    }),
+    // -n or --network
+    network: Flags.string({
+      char: 'n',
+      default: 'mainnet',
+      description: 'Network like mainnet/testnet',
+      required: false,
+    }),
   };
 
   static args = {};
@@ -27,7 +43,7 @@ contract-caller balanceOf (./src/commands/contract-caller/balanceOf.ts)
   async run(): Promise<void> {
     const { flags } = await this.parse(BalanceOf);
 
-    this.log('run contract-caller balanceOf! (./src/commands/contract-caller/balanceOf.ts)');
+    this.log('run contract-caller balanceOf');
     // [Debug]
     // this.log(flags.addr);
 
@@ -36,13 +52,19 @@ contract-caller balanceOf (./src/commands/contract-caller/balanceOf.ts)
     //   this.log('PRIVATE_KEY env is required')
     //   return
     // }
-    if (flags.addr === undefined) {
-      this.log('--addr flag for your wallet address is required');
+    if (!isTokenType(flags.token)) {
+      this.log('--token flag allows usdt or usdc');
+      return;
+    }
+
+    if (!isNetworkType(flags.network)) {
+      this.log('--token flag allows usdt or usdc');
       return;
     }
 
     // get contract
-    const usdcTokenContract = getERC20(ADDR_MAINNET.USDC);
+    const contractAddress = getTokenContractAddress(flags.token, flags.network);
+    const usdcTokenContract = getERC20(contractAddress);
 
     // call balanceOf()
     // this.log(await erc20.decimals());

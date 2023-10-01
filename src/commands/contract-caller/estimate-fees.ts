@@ -8,14 +8,14 @@ export default class EstimateFees extends Command {
 
   static examples = [
     `<%= config.bin %> <%= command.id %>
-contract-caller estimateFees (./src/commands/contract-caller/estimateFees.ts)
+contract-caller estimateFees
 `,
   ];
 
   // @See https://oclif.io/docs/flags
   static flags = {
     // -c or --chainid
-    chainid: Flags.integer({ char: 'c', description: 'chainId', required: true }),
+    chainid: Flags.integer({ char: 'c', default: 102, description: 'chainId', required: false }),
   };
 
   static args = {};
@@ -24,21 +24,13 @@ contract-caller estimateFees (./src/commands/contract-caller/estimateFees.ts)
   async run(): Promise<void> {
     const { flags } = await this.parse(EstimateFees);
 
-    this.log('run contract-caller estimateFees! (./src/commands/contract-caller/estimateFees.ts)');
-    // [Debug]
-    // this.log(flags.chainid.toString());
-
-    // validate
-    if (flags.chainid === undefined) {
-      this.log('--chainid flag for chainId is required');
-      return;
-    }
+    this.log('run contract-caller estimateFees');
 
     // get contract
     const endpointContract = getEndpoint(ADDR_MAINNET.ETH_ENDPOINT);
 
     // parameter
-    const chainID = flags.chainid ?? 102;
+    const chainID = flags.chainid;
     const ua = '0x0000000000000000000000000000000000000000';
     const payload = '0x';
     const payInZero = false;
