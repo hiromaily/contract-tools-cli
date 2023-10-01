@@ -23,6 +23,7 @@ caller-chain-path-index-lookup-failure:
 	./bin/dev contract-caller chain-path-index-lookup --chainid 999 --poolid 200
 # => return 0n when accessing by out of index
 
+# For test
 .PHONY: all-contract-caller
 all-contract-caller: caller-sub-cmd caller-balance-of caller-chain-path-index-lookup
 
@@ -49,6 +50,10 @@ multicall3-result-second:
 multicall3-inner-result:
 	./bin/dev abi-decoder multicall3-inner-result
 
+# For test
+.PHONY: all-abi-decoder
+all-abi-decoder: multicall3-request multicall3-inner-request multicall3-result multicall3-result-second multicall3-inner-result
+
 #------------------------------------------------------------------------------
 # abi-encoder for multicall3
 #------------------------------------------------------------------------------
@@ -59,3 +64,7 @@ encode-multicall3-inner-result:
 .PHONY: encode-multicall3-result
 encode-multicall3-result:
 	./bin/dev abi-encoder multicall3-result
+
+# For test
+.PHONY: all-abi-encoder
+all-abi-encoder: encode-multicall3-inner-result encode-multicall3-result
