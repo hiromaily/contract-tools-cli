@@ -1,7 +1,7 @@
 import { ethers } from 'ethers';
-import { getProvider } from '../provider';
-import { RPCS_MAINNET } from '../../configs';
 import { SGPoolABI } from '../../abi/sg-pool';
+import { RPCS_MAINNET } from '../../configs';
+import { getProvider } from '../provider';
 
 export const getSGPool = (contractAddr: string) => {
   const provider = getProvider(RPCS_MAINNET.eth);

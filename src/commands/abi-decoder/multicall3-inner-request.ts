@@ -1,6 +1,6 @@
 import { Command, Flags } from '@oclif/core';
-import { getABIInterface } from '../../lib/ethers';
 import { FeeLibraryV07ABI } from '../../lib/abi';
+import { getABIInterface } from '../../lib/ethers';
 
 export default class Multicall3InnerRequest extends Command {
   static description = 'decode request of multicall3';

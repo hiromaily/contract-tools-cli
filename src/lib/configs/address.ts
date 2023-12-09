@@ -1,5 +1,5 @@
-import { TokenType } from '../tokens';
 import { NetworkType } from '../networks';
+import { TokenType } from '../tokens';
 
 // Ethereum
 export const ADDR_MAINNET = {

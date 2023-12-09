@@ -6,6 +6,7 @@ Contract Tool CLI created by [oclif](https://oclif.io/)
 
 - [Usage](#usage)
 - [Commands](#commands)
+
 <!-- tocstop -->
 
 # Usage

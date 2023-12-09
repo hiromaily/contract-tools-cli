@@ -1,6 +1,6 @@
 import { Command, Flags } from '@oclif/core';
-import { getABIInterface } from '../../lib/ethers';
 import { Multicall3ABI } from '../../lib/abi';
+import { getABIInterface } from '../../lib/ethers';
 
 export default class Multicall3Result extends Command {
   static description = 'decode result of multicall3';

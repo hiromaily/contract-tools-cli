@@ -1,8 +1,8 @@
 import { Command, Flags } from '@oclif/core';
-import { getERC20 } from '../../lib/ethers';
 import { getTokenContractAddress } from '../../lib/configs';
-import { isTokenType } from '../../lib/tokens';
+import { getERC20 } from '../../lib/ethers';
 import { isNetworkType } from '../../lib/networks';
+import { isTokenType } from '../../lib/tokens';
 
 // @See Example: ERC-20 Contract
 // https://docs.ethers.org/v5/api/contract/example/

@@ -1,4 +1,4 @@
-import { Wallet, Provider } from 'ethers';
+import { Provider, Wallet } from 'ethers';
 
 /**
  * getSigner
