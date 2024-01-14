@@ -50,6 +50,10 @@ multicall3-result-second:
 multicall3-inner-result:
 	./bin/dev abi-decoder multicall3-inner-result
 
+.PHONY: multicall3-inner-result2
+multicall3-inner-result2:
+	./bin/dev abi-decoder multicall3-inner-result2
+
 # For test
 .PHONY: all-abi-decoder
 all-abi-decoder: multicall3-request multicall3-inner-request multicall3-result multicall3-result-second multicall3-inner-result
