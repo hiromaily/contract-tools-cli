@@ -16,7 +16,7 @@ export const getERC20Writer = (key: string, contractAddr: string) => {
   return new ethers.Contract(contractAddr, ERC20ABI, signer)
 }
 
-export const getERC20Minter = (key: string, contractAddr: string, rpcAddr: string = 'http://127.0.0.1:18545') => {
+export const getERC20Minter = (key: string, contractAddr: string, rpcAddr: string) => {
   const provider = getProvider(rpcAddr)
   const signer = getSigner(key, provider)
   return new ethers.Contract(contractAddr, MockTokenABI, signer)

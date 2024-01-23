@@ -34,9 +34,15 @@ all-contract-reader: caller-sub-cmd caller-balance-of caller-chain-path-index-lo
 approve:
 	./bin/dev contract-writer approve --token usdc spender 0x00731540cd6060991D6B9C57CE295998d9bC2faB --amount 12345123451234512345
 
+# localnet eth
 .PHONY: mint
 mint:
 	./bin/dev contract-writer mint --spender 0x00731540cd6060991D6B9C57CE295998d9bC2faB --contract 0x2D1deF28042b3c7931690dC59aEB1DD4a6Bed164 --amount 12345123451234512345
+
+# localnet bnb
+.PHONY: mint2
+mint2:
+	./bin/dev contract-writer mint --spender 0x00731540cd6060991D6B9C57CE295998d9bC2faB --contract 0x31612177B6eed0725a384d56161CDc37E723aC4a --amount 12345123451234512345 --network http://127.0.0.1:8545
 
 #------------------------------------------------------------------------------
 # abi-decoder for multicall3

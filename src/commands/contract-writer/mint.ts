@@ -2,10 +2,6 @@ import {Command, Flags} from '@oclif/core'
 import {getERC20Minter} from '../../lib/ethers'
 import {sleep} from '../../lib/sleep'
 
-// @See Example: ERC-20 Contract
-// https://docs.ethers.org/v5/api/contract/example/
-// @See ERC-20 TOKEN STANDARD
-// https://ethereum.org/en/developers/docs/standards/tokens/erc-20/
 export default class Mint extends Command {
   static description = 'call ERC20 mint()'
 
@@ -29,9 +25,16 @@ contract-writer mint (./src/commands/contract-writer/mint.ts)
       description: 'target contract address',
       required: true,
     }),
-
     // -a or --amount
     amount: Flags.string({char: 'a', description: 'amount. e.g. `123456` (USDC)', required: true}),
+    // -n or --network
+    network: Flags.string({
+      char: 'n',
+      default: 'http://127.0.0.1:18545',
+      description: 'rpc node address',
+      required: false,
+    }),
+
   }
 
   static args = {}
@@ -49,7 +52,7 @@ contract-writer mint (./src/commands/contract-writer/mint.ts)
     }
 
     // get contract
-    const tokenContract = getERC20Minter(process.env.PRIVATE_KEY, flags.contract)
+    const tokenContract = getERC20Minter(process.env.PRIVATE_KEY, flags.contract, flags.network)
 
     // call mint()
     // this.log(await tokenContract.mint(flags.spender, parseUnits(flags.amount)))
