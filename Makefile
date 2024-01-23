@@ -28,6 +28,13 @@ caller-chain-path-index-lookup-failure:
 all-contract-reader: caller-sub-cmd caller-balance-of caller-chain-path-index-lookup
 
 #------------------------------------------------------------------------------
+# contract-writter
+#------------------------------------------------------------------------------
+.PHONY: mint
+mint:
+	./bin/dev contract-writter mint --spender 0x00731540cd6060991D6B9C57CE295998d9bC2faB --amount 12345123451234512345
+
+#------------------------------------------------------------------------------
 # abi-decoder for multicall3
 #------------------------------------------------------------------------------
 .PHONY: multicall3-request

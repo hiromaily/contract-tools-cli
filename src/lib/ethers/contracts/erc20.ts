@@ -1,16 +1,23 @@
-import { ethers } from 'ethers';
-import { ERC20ABI } from '../../abi/erc20';
-import { RPCS_MAINNET } from '../../configs';
-import { getProvider } from '../provider';
-import { getSigner } from '../wallet';
+import {ethers} from 'ethers'
+import {ERC20ABI} from '../../abi/erc20'
+import {MockTokenABI} from '../../abi/mock-token'
+import {RPCS_MAINNET} from '../../configs'
+import {getProvider} from '../provider'
+import {getSigner} from '../wallet'
 
 export const getERC20 = (contractAddr: string) => {
-  const provider = getProvider(RPCS_MAINNET.eth);
-  return new ethers.Contract(contractAddr, ERC20ABI, provider);
-};
+  const provider = getProvider(RPCS_MAINNET.eth)
+  return new ethers.Contract(contractAddr, ERC20ABI, provider)
+}
 
 export const getERC20Writer = (key: string, contractAddr: string) => {
-  const provider = getProvider(RPCS_MAINNET.eth);
-  const signer = getSigner(key, provider);
-  return new ethers.Contract(contractAddr, ERC20ABI, signer);
-};
+  const provider = getProvider(RPCS_MAINNET.eth)
+  const signer = getSigner(key, provider)
+  return new ethers.Contract(contractAddr, ERC20ABI, signer)
+}
+
+export const getERC20Minter = (key: string, contractAddr: string) => {
+  const provider = getProvider('http://127.0.0.1:18545')
+  const signer = getSigner(key, provider)
+  return new ethers.Contract(contractAddr, MockTokenABI, signer)
+}
