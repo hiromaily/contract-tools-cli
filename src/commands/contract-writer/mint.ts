@@ -1,5 +1,4 @@
 import {Command, Flags} from '@oclif/core'
-import {parseUnits} from 'ethers'
 import {getERC20Minter} from '../../lib/ethers'
 import {sleep} from '../../lib/sleep'
 
@@ -12,7 +11,7 @@ export default class Mint extends Command {
 
   static examples = [
     `<%= config.bin %> <%= command.id %>
-contract-reader balanceOf (./src/commands/contract-reader/balanceOf.ts)
+contract-writer mint (./src/commands/contract-writer/mint.ts)
 `,
   ]
 
@@ -24,13 +23,20 @@ contract-reader balanceOf (./src/commands/contract-reader/balanceOf.ts)
       description: 'spender address for mint',
       required: true,
     }),
+    // -c or --contract
+    contract: Flags.string({
+      char: 'c',
+      description: 'target contract address',
+      required: true,
+    }),
+
     // -a or --amount
-    amount: Flags.string({char: 'a', description: 'amount. e.g. `0.01` (ETH)', required: true}),
+    amount: Flags.string({char: 'a', description: 'amount. e.g. `123456` (USDC)', required: true}),
   }
 
   static args = {}
 
-  // e.g. ./bin/dev contract-writer balance-of --spender 0xc1f3a7613c70BBf1Bd8C4924192Bd75451fE0dd1
+  // e.g. ./bin/dev contract-writer mint --spender 0xc1f3a7613c70BBf1Bd8C4924192Bd75451fE0dd1
   async run(): Promise<void> {
     const {flags} = await this.parse(Mint)
 
@@ -42,14 +48,12 @@ contract-reader balanceOf (./src/commands/contract-reader/balanceOf.ts)
       return
     }
 
-    // TODO: amount must be number
-
     // get contract
-    const contractAddress = '0x2D1deF28042b3c7931690dC59aEB1DD4a6Bed164' // localnet eth USDC
-    const tokenContract = getERC20Minter(process.env.PRIVATE_KEY, contractAddress)
+    const tokenContract = getERC20Minter(process.env.PRIVATE_KEY, flags.contract)
 
     // call mint()
-    this.log(await tokenContract.mint(flags.spender, parseUnits(flags.amount)))
+    // this.log(await tokenContract.mint(flags.spender, parseUnits(flags.amount)))
+    this.log(await tokenContract.mint(flags.spender, flags.amount))
     // sleep 10s
     await sleep(10_000)
     this.log(await tokenContract.balanceOf(flags.spender))

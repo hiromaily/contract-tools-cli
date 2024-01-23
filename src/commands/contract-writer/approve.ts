@@ -14,7 +14,7 @@ export default class Approve extends Command {
 
   static examples = [
     `<%= config.bin %> <%= command.id %>
-contract-reader balanceOf (./src/commands/contract-reader/balanceOf.ts)
+contract-writter approve (./src/commands/contract-writer/approve.ts)
 `,
   ]
 
@@ -64,7 +64,7 @@ contract-reader balanceOf (./src/commands/contract-reader/balanceOf.ts)
     }
 
     if (!isNetworkType(flags.network)) {
-      this.log('--token flag allows usdt or usdc')
+      this.log('--network flag allows mainnet or testnet')
       return
     }
     // TODO: amount must be number
