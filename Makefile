@@ -32,7 +32,11 @@ all-contract-reader: caller-sub-cmd caller-balance-of caller-chain-path-index-lo
 #------------------------------------------------------------------------------
 .PHONY: approve
 approve:
-	./bin/dev contract-writer approve --token usdc spender 0x00731540cd6060991D6B9C57CE295998d9bC2faB --amount 12345123451234512345
+	./bin/dev contract-writer approve --token usdc --spender 0x00731540cd6060991D6B9C57CE295998d9bC2faB --amount 12345123451234512345
+
+.PHONY: approve-local
+approve-local:
+	./bin/dev contract-writer approve --token usdc --network localnet --spender 0xF938fE7482Fe4d1b3f84E28F1D6407836AA27d99 --amount 12345
 
 # localnet eth
 .PHONY: mint

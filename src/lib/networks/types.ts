@@ -3,6 +3,7 @@ import {z} from 'zod'
 export const NetworkType = {
   MAINNET: 'mainnet',
   TESTNET: 'testnet',
+  LOCALNET: 'localnet',
 } as const
 
 export type NetworkType = (typeof NetworkType)[keyof typeof NetworkType];

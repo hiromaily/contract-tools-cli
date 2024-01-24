@@ -1,8 +1,8 @@
 import {Command, Flags} from '@oclif/core'
 import {parseUnits} from 'ethers'
-import {getTokenContractAddress} from '../../lib/configs'
+import {getTokenContractAddress, RPCS_MAINNET} from '../../lib/configs'
 import {getERC20Writer} from '../../lib/ethers'
-import {isNetworkType} from '../../lib/networks'
+import {NetworkType, isNetworkType} from '../../lib/networks'
 import {isTokenType} from '../../lib/tokens'
 
 // @See Example: ERC-20 Contract
@@ -64,14 +64,16 @@ contract-writter approve (./src/commands/contract-writer/approve.ts)
     }
 
     if (!isNetworkType(flags.network)) {
-      this.log('--network flag allows mainnet or testnet')
+      this.log('--network flag allows mainnet or testnet or localnet')
       return
     }
     // TODO: amount must be number
 
     // get contract
+    const rpcAddr = flags.network === NetworkType.LOCALNET ? 'http://127.0.0.1:18545' : RPCS_MAINNET.eth
+    console.log(rpcAddr)
     const contractAddress = getTokenContractAddress(flags.token, flags.network)
-    const tokenContract = getERC20Writer(process.env.PRIVATE_KEY, contractAddress)
+    const tokenContract = getERC20Writer(process.env.PRIVATE_KEY, contractAddress, rpcAddr)
 
     // call approve()
     this.log(await tokenContract.approve(flags.spender, parseUnits(flags.amount)))

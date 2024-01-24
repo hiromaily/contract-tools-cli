@@ -10,8 +10,8 @@ export const getERC20 = (contractAddr: string) => {
   return new ethers.Contract(contractAddr, ERC20ABI, provider)
 }
 
-export const getERC20Writer = (key: string, contractAddr: string) => {
-  const provider = getProvider(RPCS_MAINNET.eth)
+export const getERC20Writer = (key: string, contractAddr: string, rpcAddr: string) => {
+  const provider = getProvider(rpcAddr)
   const signer = getSigner(key, provider)
   return new ethers.Contract(contractAddr, ERC20ABI, signer)
 }

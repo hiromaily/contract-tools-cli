@@ -17,8 +17,14 @@ export const ADDR_TESTNET = {
   USDC: '0x8267cF9254734C6Eb452a7bb9AAF97B392258b21',
 }
 
+// ETH: localnet
+export const ADDR_LOCALNET = {
+  USDT: '0xFEAB95Eeb8507978bC5edD22E9BA2F52f9d377A1',
+  USDC: '0x2D1deF28042b3c7931690dC59aEB1DD4a6Bed164',
+}
+
 export const getTokenContractAddress = (token: TokenType, network: NetworkType) => {
-  const addr = network === NetworkType.MAINNET ? ADDR_MAINNET : ADDR_TESTNET
+  const addr = network === NetworkType.MAINNET ? ADDR_MAINNET : (NetworkType.TESTNET ? ADDR_TESTNET : ADDR_LOCALNET)
 
   switch (token) {
   case 'usdt': {
