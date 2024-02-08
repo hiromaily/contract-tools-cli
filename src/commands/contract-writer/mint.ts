@@ -13,10 +13,10 @@ contract-writer mint (./src/commands/contract-writer/mint.ts)
 
   // @See https://oclif.io/docs/flags
   static flags = {
-    // -s or --spender
-    spender: Flags.string({
-      char: 's',
-      description: 'spender address for mint',
+    // -a or --account
+    account: Flags.string({
+      //char: 'a',
+      description: 'account address for mint',
       required: true,
     }),
     // -c or --contract
@@ -30,16 +30,14 @@ contract-writer mint (./src/commands/contract-writer/mint.ts)
     // -n or --network
     network: Flags.string({
       char: 'n',
-      default: 'http://127.0.0.1:18545',
       description: 'rpc node address',
-      required: false,
+      required: true,
     }),
-
   }
 
   static args = {}
 
-  // e.g. ./bin/dev contract-writer mint --spender 0xc1f3a7613c70BBf1Bd8C4924192Bd75451fE0dd1
+  // e.g. ./bin/dev contract-writer mint --account 0xc1f3a7613c70BBf1Bd8C4924192Bd75451fE0dd1
   async run(): Promise<void> {
     const {flags} = await this.parse(Mint)
 
@@ -51,14 +49,15 @@ contract-writer mint (./src/commands/contract-writer/mint.ts)
       return
     }
 
+    // TODO: better to retrieve account address from private key
+
     // get contract
     const tokenContract = getERC20Minter(process.env.PRIVATE_KEY, flags.contract, flags.network)
 
     // call mint()
-    // this.log(await tokenContract.mint(flags.spender, parseUnits(flags.amount)))
-    this.log(await tokenContract.mint(flags.spender, flags.amount))
+    this.log(await tokenContract.mint(flags.account, flags.amount))
     // sleep 10s
     await sleep(10_000)
-    this.log(await tokenContract.balanceOf(flags.spender))
+    this.log(await tokenContract.balanceOf(flags.account))
   }
 }

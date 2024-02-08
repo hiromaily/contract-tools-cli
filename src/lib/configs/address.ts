@@ -18,9 +18,15 @@ export const ADDR_TESTNET = {
 }
 
 // ETH: localnet
+// export const ADDR_LOCALNET = {
+//   USDT: '0xFEAB95Eeb8507978bC5edD22E9BA2F52f9d377A1',
+//   USDC: '0x2D1deF28042b3c7931690dC59aEB1DD4a6Bed164',
+// }
+
+// BNB: localnet
 export const ADDR_LOCALNET = {
-  USDT: '0xFEAB95Eeb8507978bC5edD22E9BA2F52f9d377A1',
-  USDC: '0x2D1deF28042b3c7931690dC59aEB1DD4a6Bed164',
+  USDT: '0xb86e628244Cb18A0B7C93e0ED23eF11DA17C3B0b',
+  USDC: '0x31612177B6eed0725a384d56161CDc37E723aC4a',
 }
 
 export const getTokenContractAddress = (token: TokenType, network: NetworkType) => {

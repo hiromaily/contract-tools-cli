@@ -28,19 +28,17 @@ contract-writter approve (./src/commands/contract-writer/approve.ts)
     }),
     // -a or --amount
     amount: Flags.string({char: 'a', description: 'amount. e.g. `0.01` (ETH)', required: true}),
-    // -t or --token
-    token: Flags.string({
-      char: 't',
-      default: 'usdc',
-      description: 'Token like usdc/usdt',
-      required: false,
-    }),
     // -n or --network
     network: Flags.string({
       char: 'n',
-      default: 'testnet',
-      description: 'Network like mainnet/testnet',
-      required: false,
+      description: 'rpc node address',
+      required: true,
+    }),
+    // -c or --contract
+    contract: Flags.string({
+      char: 'c',
+      description: 'target contract address',
+      required: true,
     }),
   }
 
@@ -57,23 +55,21 @@ contract-writter approve (./src/commands/contract-writer/approve.ts)
       this.log('PRIVATE_KEY env is required')
       return
     }
+    // if (!isNetworkType(flags.network)) {
+    //   this.log('--network flag allows mainnet or testnet or localnet')
+    //   return
+    // }
+    // if (!isTokenType(flags.token)) {
+    //   this.log('--token flag allows usdt or usdc')
+    //   return
+    // }
 
-    if (!isTokenType(flags.token)) {
-      this.log('--token flag allows usdt or usdc')
-      return
-    }
-
-    if (!isNetworkType(flags.network)) {
-      this.log('--network flag allows mainnet or testnet or localnet')
-      return
-    }
     // TODO: amount must be number
 
     // get contract
-    const rpcAddr = flags.network === NetworkType.LOCALNET ? 'http://127.0.0.1:18545' : RPCS_MAINNET.eth
-    console.log(rpcAddr)
-    const contractAddress = getTokenContractAddress(flags.token, flags.network)
-    const tokenContract = getERC20Writer(process.env.PRIVATE_KEY, contractAddress, rpcAddr)
+    //const rpcAddr = flags.network === NetworkType.LOCALNET ? 'http://127.0.0.1:8545' : RPCS_MAINNET.eth
+    //const contractAddress = getTokenContractAddress(flags.token, flags.network)
+    const tokenContract = getERC20Writer(process.env.PRIVATE_KEY, flags.contract, flags.network)
 
     // call approve()
     this.log(await tokenContract.approve(flags.spender, parseUnits(flags.amount)))

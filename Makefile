@@ -27,26 +27,49 @@ caller-chain-path-index-lookup-failure:
 .PHONY: all-contract-reader
 all-contract-reader: caller-sub-cmd caller-balance-of caller-chain-path-index-lookup
 
+.PHONY: caller-pool-balance
+caller-pool-balance:
+	./bin/dev contract-reader pool-balance --contract 0x248fE1500123bD44A3148e3279dFB6274c2434Aa --network http://127.0.0.1:8545
+
 #------------------------------------------------------------------------------
 # contract-writer
 #------------------------------------------------------------------------------
-.PHONY: approve
-approve:
-	./bin/dev contract-writer approve --token usdc --spender 0x00731540cd6060991D6B9C57CE295998d9bC2faB --amount 12345123451234512345
+# Approve
+.PHONY: approve-eth-usdc-local
+approve-eth-usdc-local:
+	./bin/dev contract-writer approve --spender 0xF938fE7482Fe4d1b3f84E28F1D6407836AA27d99 --contract 0x2D1deF28042b3c7931690dC59aEB1DD4a6Bed164 --amount 10002345123451234512345 --network http://127.0.0.1:18545
 
-.PHONY: approve-local
-approve-local:
-	./bin/dev contract-writer approve --token usdc --network localnet --spender 0xF938fE7482Fe4d1b3f84E28F1D6407836AA27d99 --amount 12345
+.PHONY: approve-eth-usdt-local
+approve-eth-usdt-local:
+	./bin/dev contract-writer approve --spender 0xF938fE7482Fe4d1b3f84E28F1D6407836AA27d99 --contract 0xFEAB95Eeb8507978bC5edD22E9BA2F52f9d377A1 --amount 10002345123451234512345 --network http://127.0.0.1:18545
 
-# localnet eth
-.PHONY: mint
-mint:
-	./bin/dev contract-writer mint --spender 0x00731540cd6060991D6B9C57CE295998d9bC2faB --contract 0x2D1deF28042b3c7931690dC59aEB1DD4a6Bed164 --amount 12345123451234512345
+.PHONY: approve-bnb-usdc-local
+approve-bnb-usdc-local:
+	./bin/dev contract-writer approve --spender 0xF938fE7482Fe4d1b3f84E28F1D6407836AA27d99 --contract 0x31612177B6eed0725a384d56161CDc37E723aC4a --amount 10002345123451234512345 --network http://127.0.0.1:8545
 
-# localnet bnb
-.PHONY: mint2
-mint2:
-	./bin/dev contract-writer mint --spender 0x00731540cd6060991D6B9C57CE295998d9bC2faB --contract 0x31612177B6eed0725a384d56161CDc37E723aC4a --amount 12345123451234512345 --network http://127.0.0.1:8545
+.PHONY: approve-bnb-usdt-local
+approve-bnb-usdt-local:
+	./bin/dev contract-writer approve --spender 0xF938fE7482Fe4d1b3f84E28F1D6407836AA27d99 --contract 0xb86e628244Cb18A0B7C93e0ED23eF11DA17C3B0b --amount 10002345123451234512345 --network http://127.0.0.1:8545
+
+# Mint
+.PHONY: mint-eth-usdc
+mint-eth-usdc:
+	./bin/dev contract-writer mint --account 0x00731540cd6060991D6B9C57CE295998d9bC2faB --contract 0x2D1deF28042b3c7931690dC59aEB1DD4a6Bed164 --amount 12000345123451234512345 --network http://127.0.0.1:18545
+
+.PHONY: mint-eth-usdt
+mint-eth-usdt:
+	./bin/dev contract-writer mint --account 0x00731540cd6060991D6B9C57CE295998d9bC2faB --contract 0xFEAB95Eeb8507978bC5edD22E9BA2F52f9d377A1 --amount 350002345123451234512345 --network http://127.0.0.1:18545
+
+.PHONY: mint-bnb-usdc
+mint-bnb-usdc:
+	./bin/dev contract-writer mint --account 0x00731540cd6060991D6B9C57CE295998d9bC2faB --contract 0x31612177B6eed0725a384d56161CDc37E723aC4a --amount 22000345123451234512345 --network http://127.0.0.1:8545
+
+.PHONY: mint-bnb-usdt
+mint-bnb-usdt:
+	./bin/dev contract-writer mint --account 0x00731540cd6060991D6B9C57CE295998d9bC2faB --contract 0xb86e628244Cb18A0B7C93e0ED23eF11DA17C3B0b --amount 550002345123451234512345 --network http://127.0.0.1:8545
+
+.PHONY: mint-all
+mint-all: mint-eth-usdc mint-eth-usdt mint-bnb-usdc mint-bnb-usdt
 
 #------------------------------------------------------------------------------
 # abi-decoder for multicall3
