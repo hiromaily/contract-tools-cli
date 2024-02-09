@@ -2,9 +2,6 @@
 #------------------------------------------------------------------------------
 # contract-reader
 #------------------------------------------------------------------------------
-.PHONY: caller-sub-cmd
-caller-sub-cmd:
-	./bin/dev contract-reader sub-cmd
 
 .PHONY: caller-balance-of
 caller-balance-of:
@@ -22,10 +19,6 @@ caller-chain-path-index-lookup:
 caller-chain-path-index-lookup-failure:
 	./bin/dev contract-reader chain-path-index-lookup --chainid 999 --poolid 200
 # => return 0n when accessing by out of index
-
-# For test
-.PHONY: all-contract-reader
-all-contract-reader: caller-sub-cmd caller-balance-of caller-chain-path-index-lookup
 
 .PHONY: caller-pool-balance
 caller-pool-balance:
@@ -70,6 +63,17 @@ mint-bnb-usdt:
 
 .PHONY: mint-all
 mint-all: mint-eth-usdc mint-eth-usdt mint-bnb-usdc mint-bnb-usdt
+
+# Transfer
+# eth bridge address: 0xF938fE7482Fe4d1b3f84E28F1D6407836AA27d99
+# bnb bridge address: 0xDb44680083572650C20477194D461F1d1Dbf6EC6
+.PHONY: transfer-eth
+transfer-eth:
+	./bin/dev contract-writer send-transfer --to 0xF938fE7482Fe4d1b3f84E28F1D6407836AA27d99 --amount 100 --network http://127.0.0.1:18545
+
+.PHONY: transfer-bnb
+transfer-bnb:
+	./bin/dev contract-writer send-transfer --to 0xDb44680083572650C20477194D461F1d1Dbf6EC6 --amount 100 --network http://127.0.0.1:8545
 
 #------------------------------------------------------------------------------
 # abi-decoder for multicall3
@@ -120,3 +124,6 @@ all-abi-encoder: encode-multicall3-inner-result encode-multicall3-result
 #------------------------------------------------------------------------------
 # utility
 #------------------------------------------------------------------------------
+.PHONY: dprint-fmt
+dprint-fmt:
+	dprint fmt

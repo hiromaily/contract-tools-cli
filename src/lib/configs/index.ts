@@ -1,2 +1,2 @@
-export * from './address'
-export * from './rpcs'
+export * from './address';
+export * from './rpcs';
