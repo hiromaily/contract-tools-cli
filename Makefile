@@ -47,33 +47,36 @@ approve-bnb-usdt-local:
 # Mint
 .PHONY: mint-eth-usdc
 mint-eth-usdc:
-	./bin/dev contract-writer mint --account 0x00731540cd6060991D6B9C57CE295998d9bC2faB --contract 0x2D1deF28042b3c7931690dC59aEB1DD4a6Bed164 --amount 12000345123451234512345 --network http://127.0.0.1:18545
+	./bin/dev contract-writer mint --account 0x00731540cd6060991D6B9C57CE295998d9bC2faB --contract 0xbabc628B9D14Ace99D3De6DBad1A3C28d832090d --amount 12000345123451234512345 --network http://127.0.0.1:18545
 
 .PHONY: mint-eth-usdt
 mint-eth-usdt:
-	./bin/dev contract-writer mint --account 0x00731540cd6060991D6B9C57CE295998d9bC2faB --contract 0xFEAB95Eeb8507978bC5edD22E9BA2F52f9d377A1 --amount 350002345123451234512345 --network http://127.0.0.1:18545
+	./bin/dev contract-writer mint --account 0x00731540cd6060991D6B9C57CE295998d9bC2faB --contract 0x964E727Fa15f3e7d80fBc7F1599F952EA8e6033d --amount 350002345123451234512345 --network http://127.0.0.1:18545
 
 .PHONY: mint-bnb-usdc
 mint-bnb-usdc:
-	./bin/dev contract-writer mint --account 0x00731540cd6060991D6B9C57CE295998d9bC2faB --contract 0x31612177B6eed0725a384d56161CDc37E723aC4a --amount 22000345123451234512345 --network http://127.0.0.1:8545
+	./bin/dev contract-writer mint --account 0x00731540cd6060991D6B9C57CE295998d9bC2faB --contract 0x783BAf7894ED9C3dB9c325b5bc5f9d6b3E2f1f16 --amount 22000345123451234512345 --network http://127.0.0.1:8545
 
 .PHONY: mint-bnb-usdt
 mint-bnb-usdt:
-	./bin/dev contract-writer mint --account 0x00731540cd6060991D6B9C57CE295998d9bC2faB --contract 0xb86e628244Cb18A0B7C93e0ED23eF11DA17C3B0b --amount 550002345123451234512345 --network http://127.0.0.1:8545
+	./bin/dev contract-writer mint --account 0x00731540cd6060991D6B9C57CE295998d9bC2faB --contract 0xbe53F5dff466B876E4e93fd45a7d2C8dDd370C3d --amount 550002345123451234512345 --network http://127.0.0.1:8545
 
 .PHONY: mint-all
 mint-all: mint-eth-usdc mint-eth-usdt mint-bnb-usdc mint-bnb-usdt
 
 # Transfer
-# eth bridge address: 0xF938fE7482Fe4d1b3f84E28F1D6407836AA27d99
-# bnb bridge address: 0xDb44680083572650C20477194D461F1d1Dbf6EC6
+# eth bridge address: 0xa37a1a9Cc31e44adFb68Da558fc1F00f77983794
+# bnb bridge address: 0x5A1bbAEE621617eE9e63A6F8cf95E8a3aD861526
 .PHONY: transfer-eth
 transfer-eth:
-	./bin/dev contract-writer send-transfer --to 0xF938fE7482Fe4d1b3f84E28F1D6407836AA27d99 --amount 100 --network http://127.0.0.1:18545
+	./bin/dev contract-writer send-transfer --to 0xa37a1a9Cc31e44adFb68Da558fc1F00f77983794 --amount 99999999 --network http://127.0.0.1:18545
 
 .PHONY: transfer-bnb
 transfer-bnb:
-	./bin/dev contract-writer send-transfer --to 0xDb44680083572650C20477194D461F1d1Dbf6EC6 --amount 100 --network http://127.0.0.1:8545
+	./bin/dev contract-writer send-transfer --to 0x5A1bbAEE621617eE9e63A6F8cf95E8a3aD861526 --amount 100 --network http://127.0.0.1:8545
+
+.PHONY: transfer-all
+transfer-all: transfer-eth transfer-bnb
 
 #------------------------------------------------------------------------------
 # abi-decoder for multicall3
