@@ -2168,4 +2168,4 @@ export const PoolABI = [
     ],
     anonymous: false,
   },
-] as const;
+] as const

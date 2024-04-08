@@ -78,6 +78,23 @@ transfer-bnb:
 .PHONY: transfer-all
 transfer-all: transfer-eth transfer-bnb
 
+# stopTransfer
+.PHONY: stop-transfer-bnb-usdc
+stop-transfer-bnb-usdc:
+	./bin/dev contract-writer stop-transfer --contract 0x3F5Fb378e0b9E9d0E20B71C72FEe9b2175121DfF --network http://127.0.0.1:8545
+
+.PHONY: stop-transfer-bnb-usdt
+stop-transfer-bnb-usdt:
+	./bin/dev contract-writer stop-transfer --contract 0x6c40cc26E00ed6b20C072855EDA71d2aAAb5eC4a --network http://127.0.0.1:8545
+
+# .PHONY: stop-transfer-eth-usdc
+# stop-transfer-eth-usdc:
+# 	./bin/dev contract-writer stop-transfer --contract 0xF16Fdb1FF23359633cCe37b7554394E8beA262D4 --network http://127.0.0.1:18545
+
+# .PHONY: stop-transfer-eth-usdt
+# stop-transfer-eth-usdt:
+# 	./bin/dev contract-writer stop-transfer --contract 0x6dE8E613E024De9FEE0759A016ff9BA80b668bFf --network http://127.0.0.1:18545
+
 #------------------------------------------------------------------------------
 # abi-decoder for multicall3
 #------------------------------------------------------------------------------

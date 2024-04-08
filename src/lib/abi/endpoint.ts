@@ -5,4 +5,4 @@ export const EndpointABI = [
   'function estimateFees(uint16 _dstChainId, address _userApplication, bytes calldata _payload, bool _payInZRO, bytes calldata _adapterParams) external view returns (uint nativeFee, uint zroFee)',
   // Events
   'event NewLibraryVersionAdded(uint16 version)',
-] as const;
+] as const

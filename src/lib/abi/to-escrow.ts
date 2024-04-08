@@ -588,4 +588,4 @@ export const ToEscrowABI = [
     ],
     anonymous: false,
   },
-] as const;
+] as const

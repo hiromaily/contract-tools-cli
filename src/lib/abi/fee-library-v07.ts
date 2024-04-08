@@ -1222,4 +1222,4 @@ export const FeeLibraryV07ABI = [
     stateMutability: 'payable',
     type: 'receive',
   },
-] as const;
+] as const
