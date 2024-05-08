@@ -34,7 +34,7 @@ contract-reader balanceOf (./src/commands/contract-reader/balanceOf.ts)
 
   static args = {}
 
-  // e.g. ./bin/dev contract-reader pool-balance --addr 0xc1f3a7613c70BBf1Bd8C4924192Bd75451fE0dd1
+  // e.g. ./bin/dev contract-reader pool-balance --contract 0xc1f3a7613c70BBf1Bd8C4924192Bd75451fE0dd1 $(BNB_USDC_POOL_ADDR) --network $(NETWORK_BNB)
   async run(): Promise<void> {
     const {flags} = await this.parse(PoolBalanceOf)
 

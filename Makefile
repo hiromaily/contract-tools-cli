@@ -1,3 +1,21 @@
+USER_ADDR=0x00731540cd6060991D6B9C57CE295998d9bC2faB
+
+NETWORK_ETH=http://127.0.0.1:18545
+NETWORK_BNB=http://127.0.0.1:8545
+
+ETH_USDC_POOL_ADDR=0xF93199cFa3E74Ffd321F62B67d4034Ad207cD927
+ETH_USDT_POOL_ADDR=0x30BaBba8d5E322639834459991754036Ae813FE3
+ETH_WETH_POOL_ADDR=0xb824662d7d200c5a5e5a0fC4bBc056eDC779a4C6
+ETH_USDC_TOKEN_ADDR=0xF938fE7482Fe4d1b3f84E28F1D6407836AA27d99
+ETH_USDT_TOKEN_ADDR=0x6fdA347f2A64fd55F43B63c28619548c9B362835
+ETH_BRIDGE_ADDR=0xC5777A1ac9A446aBDae4d4D71a330ebF77705a46
+
+BNB_USDC_POOL_ADDR=0x4128F74366FFd66B599c37898A679DF984ddA382
+BNB_USDT_POOL_ADDR=0xa45acC1Dc121165bB9A8CD453346826fb8CCb17A
+BNB_WETH_POOL_ADDR=0xeDF411639F00D164A989DCd191C13949b7bb44ad
+BNB_USDC_TOKEN_ADDR=0xA1482df59c75215c5ee80fEc1FB18523878614Bb
+BNB_USDT_TOKEN_ADDR=0x9ec9656e9A1601F37d336E0f47eBF845AeC31a1c
+BNB_BRIDGE_ADDR=0xF8fA7e0759b5189E4FA4E47094d50F2dfca620bC
 
 #------------------------------------------------------------------------------
 # contract-reader
@@ -5,7 +23,7 @@
 
 .PHONY: caller-balance-of
 caller-balance-of:
-	./bin/dev contract-reader balance-of --addr 0xc1f3a7613c70BBf1Bd8C4924192Bd75451fE0dd1
+	./bin/dev contract-reader balance-of --addr $(USER_ADDR)
 
 .PHONY: caller-estimate-fees
 caller-estimate-fees:
@@ -22,7 +40,7 @@ caller-chain-path-index-lookup-failure:
 
 .PHONY: caller-pool-balance
 caller-pool-balance:
-	./bin/dev contract-reader pool-balance --contract 0x248fE1500123bD44A3148e3279dFB6274c2434Aa --network http://127.0.0.1:8545
+	./bin/dev contract-reader pool-balance --contract $(BNB_USDC_POOL_ADDR) --network $(NETWORK_BNB)
 
 #------------------------------------------------------------------------------
 # contract-writer
@@ -30,36 +48,36 @@ caller-pool-balance:
 # Approve
 .PHONY: approve-eth-usdc-local
 approve-eth-usdc-local:
-	./bin/dev contract-writer approve --spender 0xF938fE7482Fe4d1b3f84E28F1D6407836AA27d99 --contract 0x2D1deF28042b3c7931690dC59aEB1DD4a6Bed164 --amount 10002345123451234512345 --network http://127.0.0.1:18545
+	./bin/dev contract-writer approve --spender $(ETH_BRIDGE_ADDR) --contract $(ETH_USDC_TOKEN_ADDR) --amount 10002345123451234512345 --network $(NETWORK_ETH)
 
 .PHONY: approve-eth-usdt-local
 approve-eth-usdt-local:
-	./bin/dev contract-writer approve --spender 0xF938fE7482Fe4d1b3f84E28F1D6407836AA27d99 --contract 0xFEAB95Eeb8507978bC5edD22E9BA2F52f9d377A1 --amount 10002345123451234512345 --network http://127.0.0.1:18545
+	./bin/dev contract-writer approve --spender $(ETH_BRIDGE_ADDR) --contract $(ETH_USDT_TOKEN_ADDR) --amount 10002345123451234512345 --network $(NETWORK_ETH)
 
 .PHONY: approve-bnb-usdc-local
 approve-bnb-usdc-local:
-	./bin/dev contract-writer approve --spender 0xF938fE7482Fe4d1b3f84E28F1D6407836AA27d99 --contract 0x31612177B6eed0725a384d56161CDc37E723aC4a --amount 10002345123451234512345 --network http://127.0.0.1:8545
+	./bin/dev contract-writer approve --spender $(ETH_BRIDGE_ADDR) --contract $(BNB_USDC_TOKEN_ADDR) --amount 10002345123451234512345 --network $(NETWORK_BNB)
 
 .PHONY: approve-bnb-usdt-local
 approve-bnb-usdt-local:
-	./bin/dev contract-writer approve --spender 0xF938fE7482Fe4d1b3f84E28F1D6407836AA27d99 --contract 0xb86e628244Cb18A0B7C93e0ED23eF11DA17C3B0b --amount 10002345123451234512345 --network http://127.0.0.1:8545
+	./bin/dev contract-writer approve --spender $(ETH_BRIDGE_ADDR) --contract $(BNB_USDT_TOKEN_ADDR) --amount 10002345123451234512345 --network $(NETWORK_BNB)
 
 # Mint
 .PHONY: mint-eth-usdc
 mint-eth-usdc:
-	./bin/dev contract-writer mint --account 0x00731540cd6060991D6B9C57CE295998d9bC2faB --contract 0xbabc628B9D14Ace99D3De6DBad1A3C28d832090d --amount 12000345123451234512345 --network http://127.0.0.1:18545
+	./bin/dev contract-writer mint --account $(USER_ADDR) --contract $(ETH_USDC_TOKEN_ADDR) --amount 12000345123451234512345 --network $(NETWORK_ETH)
 
 .PHONY: mint-eth-usdt
 mint-eth-usdt:
-	./bin/dev contract-writer mint --account 0x00731540cd6060991D6B9C57CE295998d9bC2faB --contract 0x964E727Fa15f3e7d80fBc7F1599F952EA8e6033d --amount 350002345123451234512345 --network http://127.0.0.1:18545
+	./bin/dev contract-writer mint --account $(USER_ADDR) --contract $(ETH_USDT_TOKEN_ADDR) --amount 350002345123451234512345 --network $(NETWORK_ETH)
 
 .PHONY: mint-bnb-usdc
 mint-bnb-usdc:
-	./bin/dev contract-writer mint --account 0x00731540cd6060991D6B9C57CE295998d9bC2faB --contract 0x783BAf7894ED9C3dB9c325b5bc5f9d6b3E2f1f16 --amount 22000345123451234512345 --network http://127.0.0.1:8545
+	./bin/dev contract-writer mint --account $(USER_ADDR) --contract $(BNB_USDC_TOKEN_ADDR) --amount 22000345123451234512345 --network $(NETWORK_BNB)
 
 .PHONY: mint-bnb-usdt
 mint-bnb-usdt:
-	./bin/dev contract-writer mint --account 0x00731540cd6060991D6B9C57CE295998d9bC2faB --contract 0xbe53F5dff466B876E4e93fd45a7d2C8dDd370C3d --amount 550002345123451234512345 --network http://127.0.0.1:8545
+	./bin/dev contract-writer mint --account $(USER_ADDR) --contract $(BNB_USDT_TOKEN_ADDR) --amount 550002345123451234512345 --network $(NETWORK_BNB)
 
 .PHONY: mint-all
 mint-all: mint-eth-usdc mint-eth-usdt mint-bnb-usdc mint-bnb-usdt
@@ -69,11 +87,11 @@ mint-all: mint-eth-usdc mint-eth-usdt mint-bnb-usdc mint-bnb-usdt
 # bnb bridge address: 0x5A1bbAEE621617eE9e63A6F8cf95E8a3aD861526
 .PHONY: transfer-eth
 transfer-eth:
-	./bin/dev contract-writer send-transfer --to 0xa37a1a9Cc31e44adFb68Da558fc1F00f77983794 --amount 99999999 --network http://127.0.0.1:18545
+	./bin/dev contract-writer send-transfer --to $(ETH_BRIDGE_ADDR) --amount 99999999 --network $(NETWORK_ETH)
 
 .PHONY: transfer-bnb
 transfer-bnb:
-	./bin/dev contract-writer send-transfer --to 0x5A1bbAEE621617eE9e63A6F8cf95E8a3aD861526 --amount 100 --network http://127.0.0.1:8545
+	./bin/dev contract-writer send-transfer --to $(BNB_BRIDGE_ADDR) --amount 100 --network $(NETWORK_BNB)
 
 .PHONY: transfer-all
 transfer-all: transfer-eth transfer-bnb
@@ -81,11 +99,11 @@ transfer-all: transfer-eth transfer-bnb
 # stopTransfer
 .PHONY: stop-transfer-bnb-usdc
 stop-transfer-bnb-usdc:
-	./bin/dev contract-writer stop-transfer --contract 0x3F5Fb378e0b9E9d0E20B71C72FEe9b2175121DfF --network http://127.0.0.1:8545
+	./bin/dev contract-writer stop-transfer --contract $(BNB_USDC_POOL_ADDR) --network $(NETWORK_BNB)
 
 .PHONY: stop-transfer-bnb-usdt
 stop-transfer-bnb-usdt:
-	./bin/dev contract-writer stop-transfer --contract 0x6c40cc26E00ed6b20C072855EDA71d2aAAb5eC4a --network http://127.0.0.1:8545
+	./bin/dev contract-writer stop-transfer --contract $(BNB_USDT_POOL_ADDR) --network $(NETWORK_BNB)
 
 # .PHONY: stop-transfer-eth-usdc
 # stop-transfer-eth-usdc:
